@@ -1,0 +1,386 @@
+================================
+Dear Students, 
+
+Welcome to NareshIT
+
+This is Mr. Rajesh your batch Admin.
+
+Queries & Doubts:-
+Please contact me on 
+7997997808
+(WhatsApp chat only)
+
+===============================
+
+Cloud Computing : 
+
+Pay-as-you-go : 
+
+To calc latency : 
+ping google.com
+ping yahoo.com
+
+traceroute google.com
+
+windows : tracert google.com
+
+=============================================
+
+NIST Definition of Cloud Computing
+
+Cloud computing is a model for enabling ubiquitous, convenient, on-demand network access to a shared pool of configurable computing resources (e.g., networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction.
+
+
+ADVANTAGES OF CLOUD COMPUTING
+ On-demand self-service : 
+ Broad network access & High Availability : 
+ Resource pooling. :
+ Rapid elasticity. : 
+ Measured Services. : 
+ 
+===========================================
+
+
+7:30 Am IST to 8:30/45 AM IST.. 
+
+S3 : AWS version of google Drive : 
+99.99 % Availability
+99.999999999 % durability (11 9's)
+
+ec2 : Place where we can run our servers. 
+
+server..??? 
+
+t2.nano	 : 1 vcpu, 0.5 memory/RAM
+t2.large : 2 cpu, 8 gb ram
+
+
+======================================
+
+DEPLOYMENT MODELS :
+
+Public cloud   :  Open for everyone.. Main: Service provider takes care..  AWS, Azure, GCP….
+
+Private cloud  : Not open for all, Dedicated to one organisation..  Main: you can fix issues / get assistance from 3rd party.. 
+
+Hybrid cloud : Combination of multiple deployment options.. (aws+azure / AWS + Our existing office network)
+We have used AWS Direct Connect..  jio/Sify/Airtel
+
+Community cloud : Group of organisation build and use DC. 
+
+
+==================================
+
+Service Models of CC: 
+
+SaaS : Software as a Service : 
+PaaS : platform as a Service : 
+IaaS : Infrastructure as a Service : 
+
+On-Premise : 
+
+Demo : Deliver a website using Service models of CC.
+
+==================================
+
+CAPEX : Capital Expendature
+OPEX : Operational Expendature 
+
+
+Common Environments in SDLC :
+
+Training / Sandbox : 
+Development : 
+SQA (software quality assutance) :
+UAT / Pre-prod : 
+Production : 
+
+
+=====================================================================
+
+Course content : https://avinash.s3.amazonaws.com/aws.pdf
+
+=====================================================================
+
+
+Region : geographical location or physical location.. No technical defination.. 
+32 Regions across the globe..
+
+4 regions : 
+2 china regions
+2 us-gov-cloud
+
+AZ / Availability Zone : Data Center or combination of multiple DCs.. present with in region.. Every region contains min of 3 AZs..  102 AZs.. 
+
+Edge Location : Cached location : CDN endpoints.. Content delivery network.. Designed to reduse latency.. Most frequently accessed data cache near to customer locations.. When any request comes this will respond quickly, instead of sending that request to origin.. 
+600+ PoP Locations
+
+
+=====================================================================
+
+How to create an AWS account..
+
+Step 1 : aws.amazon.com/free --> root user email id --> Account name and confirm
+
+root user : Unrestricted access on AWS account. If you are login with email id, then you logged in as root user.
+
+production support / monitoring team / dba / aws admin: 
+Least privilages mechanism : Always LPM.. : provide permissions to perform his job.. 
+
+
+Step 2 : provide all contact information (Full name, address, pincode) 
+
+Step 3 : provide payment information (Visa/master card/amex/discovery).. AWS deducts 2 INR and refund back with in 48-72 hrs..
+** Make sure international transactions are enable while account creation.
+
+Step 4 : Identity verification
+	--> text verification
+	--> Call verification
+	
+
+Step 5 : Choose support plans
+
+1. Account and Billing : 24x7 support.. Any support plan supports this.. 
+2. Technical Support : Based on the support plan.. 
+
+Basic Support plan : Free.. : CHOOSE THIS WHEN YOU ARE CREATING YOUR OWN AWS ACCOUNT
+2 --> No technical support from AWS. AWS Knowledge Base articles,, Re:post.. 
+trusted Advisor : Some core area checks
+-----
+Developer Support Plan : starts from 29$/Month... 
+2 --> With in 12-24 Local business hours we will get assiatance.. An AWS Associate.. Email support..
+1 user can raise tickets, but we can raise unlimited tickets..
+Trusted Advisor : Some core area checks
+
+Case Severity : 
+General guidance: < 24 hours
+System impaired: < 12 hours 
+
+-----
+Business Support Plan : starts from 100$/Month
+2 --> With in 1 hours we will get assiatance..  AW AWS Engineer.. email, phone and chat support.. 
+Any user can raise tickets, we can raise unlimited tickets.. 
+Trusted Advisor : Full checks
+
+Case Severity : 
+General guidance: < 24 hours
+System impaired: < 12 hours
+Production system impaired: < 4 hours
+Production system down: < 1 hour
+
+----
+Enterprise On-Ramp : Starts from 5,500$/month
+2 --> With in 30 min we will get assiatance.. An AWS Sr. engineer.. email, phone and chat support.. 
+Any user can raise tickets, we can raise unlimited tickets.. 
+Annual Architectural and Operational reviews by AWS
+Trusted Advisor : Full checks
+
+Case Severity : 
+General guidance: < 24 hours
+System impaired: < 12 hours
+Production system impaired: < 4 hours
+Production system down: < 1 hour
+Business/Mission-critical system down: < 30 minutes
+
+--
+
+Enterprise SP : Starts from 15,000$/month
+2 --> With in 15 min we will get assiatance.. An AWS Sr. engineer.. email, phone and chat support.. 
+Any user can raise tickets, we can raise unlimited tickets.. 
+AWS Allocated a Dedicated TAM (technical account manager)
+Annual Architectural and Operational reviews by AWS
+AWS provides trainings on the services
+Trusted Advisor : Full checks
+
+Case Severity : 
+General guidance: < 24 hours
+System impaired: < 12 hours
+Production system impaired: < 4 hours
+Production system down: < 1 hour
+Business/Mission-critical system down: < 15 minutes
+
+
+We can use "Enterprise SP" and "Enterprise on-ramp SP" for multiple AWS accounts. No need to opt support plan for every account we create.
+
+=====================================================================
+
+D: 16/11/2023
+
+MFA : MultiFactor Authentication : Additional level of security for our login process.
+
+IAM : Identity and access management : We can create users, groups and we can manage user access on aws account.
+
+IAM user with AdministratorAccess = root user - account/billing management
+
+
+Root user : Unrestricted access on AWS account. 
+IAM user : Identity and access management : 
+
+
+Requirement : Need a user who can manage only s3 service.!!!
+
+
+Password policy : We can enforce all IAM users to maintain specified standards while setting their own passwords.
+
+
+Task 1 : Create an AWS account and enable MFA.
+
+Task 2 : Setup password policy and creqate alias for your aws account.
+
+Task 3 : Create an IAM user and allocate him "S3FullAccess", now login as this user and create and delete a bucket.
+
+Task 4 : Create an IAM user and allocate him "ec2fullaccess", login as this user and list the instance types and navigate to securitu groups screen and there it should show 1 security group.
+
+
+=========================================================================
+
+
+Password policy : We can enforce all IAM users to maintain specified standards while setting their own passwords.
+
+___________________________________
+
+root user : unrestricted access on aws env.. : Dont use this for day to day activities.. 
+
+Least privilages mechanism : provide only required permissions to perform his job.
+
+
+Step 1 : provide username : "S3_Admin"
+Access type; Console Access.. Password and Sign-in URL
+
+Step 2 ; provide required permissions.
+
+Groups : Create a group, add permissions at group level and add this user to group.
+COpy permissions from another user : 
+Attach permissions directly : 
+
+Step 3: review and create user. 
+
+
+IAM user with Administrator Access = same as root user without account management permissions.
+
+
+Requirement : I need an IAM user, He should have full access on AWS account, but no access on S3 Service.
+
+
+Policy : Set of Permissions on our aws account. Policy writtens in JSON format.
+--> AWS Managed - Job Function
+--> AWS Managed Policy
+--> Customer Managed Policy
+__________________
+
+Policy : Document contains set of permissions writtens in JSON format. Policy provide permissions on AWS resources for users/groups/roles.
+
+
+--> AWS Managed Policy : Policy provided by AWS, Based on Service.
+--> AWS managed - Job function policy : policy provided by AWS, It is a combination of multiple Services. AWS provided this based on some standard jobs available in market.
+--> Customer Managed policy : 
+
+
+Task : Create a policy to deny s3.
+
+Task 2 : Create an IAM user, provide him "AdministratorAccess" and associate "task 1 policy" to this user, login and try to create a bucket.!!! 
+
+
+For Task 3 create a new IAM user and associate the poliocy you are creating as part of Task 3.
+Task 3 : Create a Policy to allow S3FullACcess, but this should work from only one/your Network.
+** You have to add an IP address condition.
+
+https://whatismyipaddress.com/
+60.243.230.180/32
+
+Task 4 : Create an IAM user, provide him "AdministratorAccess", Use this user throughout the course.
+Provide him "Billing access".
+
+
+=========================================================================
+
+
+ARN : Amazon Resource Name : A unique identifier for our resources.
+
+Inline : Not a reusable policy. We can apply policy for specific resource. Hard to track this, Only in special occassions we use this inline policy.
+
+CloudTrail : Logging service in AWS. It logs everything (including refresh also).
+--> Enabled by default. We dont have option disable it. 
+--> Defaultly it can store last 90 days logs.
+
+
+Credential report : It gives all IAM users last logged in, pwd expiration, creation data and accesskeys..
+
+
+policy sumulator : 
+
+
+
+Task  : Create a custom policy to activate MFA for IAM users, He himself able to activate MFA. 
+	Create an IAM user, provide S3FullAccess. Login as this user and Now try to "Activate MFA". It will give error. Fix this errors and allow him to activate MFA.
+
+
+Task 2 : Create an IAM user, Want to provide "S3FullAccess" with our custom policy,  We need to restrict this user to work only on specific region (mumbai/ap-south-1).
+
+Create a policy allow all s3 actions on all resources, Add a "region" condition.
+
+==> Login as this user, Try to create bucket in "mumbai" it should allow. If you choose any other regions it should not allow.
+
+
+
+=======================================================================================
+
+
+
+AWS @ 7:30 AM (IST) By Mr.Avinash
+
+Day-1 https://youtu.be/uE5sTMoAM0w
+Day-2 https://youtu.be/thV-sSJe2XY
+Day-3 https://youtu.be/Kepd6MKKOGs
+
+
+Course: AWS
+Time: 7:30 AM
+Faculty: Mr. Avinash
+
+👉🏻Live Class: ₹10000/-
+👉🏻Live Class + Video Recordings: 14000/-
+
+👉🏻Syllabus
+https://nareshit.in/aws-training/
+
+*Online student one time payment no installments Please.*
+
+*Naresh i Technologies  Razorpay Payment Pages* https://pages.razorpay.com/Naresh-IT
+
+*Bank Details*
+Name: Naresh i Technologies
+A/C No. 50200022639833
+Bank: HDFC
+A/C Type: Current Account
+IFSC Code: HDFC0001627
+MICR Code: 500240035
+Branch Code: 001627
+Branch:  Ameerpet
+
+Note: If you want to use Phonepe or Google Pay then follow the below steps.
+
+You can find the option Bank Transfer in Phonepe and Google pay. There you can enter our bank account number and you can transfer the amount.  Please mention your Name on the receipt and send a email once the payment is done to support@nareshit.com.
+
+Thanks and Regards
+Rajesh NIT Admin 
+7997997808
+(WhatsApp chat only)
+
+
+
+======================
+
+Fill this Google Form after completing the payment.
+
+*GOOGLE FORM*
+Link: bit.ly/AWS7AMAVI
+
+
+
+
+
+
+
+
+ 
