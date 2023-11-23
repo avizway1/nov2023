@@ -288,3 +288,51 @@ Task : https://linuxsurvival.com/ (complete atleast 2 modules)
 
 ==========================================================================================
 
+D: 23/11/2023
+
+Req: Make this linux Instance as Web Server (Apache).
+
+rpm : Redhat package manager
+yum : Yellowdog Update manager
+
+yum install httpd -y
+service httpd status			--> httpd webserver service status
+service httpd start/stop/restart
+chkconfig httpd on				--> Makes httpd as logon service.
+
+path : /var/www/html/
+
+cd /var/www/html/
+
+Apache defaultly runs on port 80, if you want to change to diff port, we need to modify the httpd.config file. Change listen option, Make sure you restart httpd service.
+--> Open required port number in security group.
+
+------
+
+current : 43.205.232.51
+
+3.109.183.6
+3.6.104.83 ==> new eip
+
+
+
+
+EIP / Elatic IP Address : With the help of EIP, we can give a static public ip address to our ec2 instance.
+--> If you perform stop & start, this EIP wont change.
+
+==> We cannot change instance type when it is in running state. 
+We should stop instance to perform upgrade/downgrade.
+
+
+-----
+
+Tool to Move the files to amazon linux ec2 instance : WinSCP
+
+--------
+
+Task 1 : Launch an amazon linux 2, make it as webserver and deliver custom web content.
+
+Task 2 : Launch an Amazon Linux 2, install nginx and deliver custom web page.
+
+
+
