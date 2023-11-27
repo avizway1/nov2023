@@ -508,9 +508,22 @@ Ans ; Create a snapshot of un-encry volume, then create a volume from that snaps
 
 ============================================================================================
 
+Task 1 : Launch an ec2 instance in ap-south-1a.. Create a "New volume with 1 gb size" in ap-south-1a and attach this volume to ec2 instance and make it available and write some data. Goto AWS console "Increase the volume size to 2 GB", make this 2gb volume available at OS level. Write some data.
+
+Task 2 : Launch Another ec2 instance in ap-south-1b..
+Get the 2gb volume data from instance 1a to newly launch 1b ec2 instance.. Make Same volume available to "1b instance"..!!
+
+Task 3 : Create a volume as unencrypted, and create another copy of volume as encrypted.
 
 
+=====================================================================================
 
+-----
+
+SOP : Standard Operational Procedure : 
+
+DLM : Data Lifecycle manager : Automate the snapshot creation process. 
+--> We use "tags" to filter the resources. 
 
 
 DLM : Data lifeCycle Management : Designed to automate the snapshot /AMI creation.
@@ -524,12 +537,6 @@ Value=prd/uat/dev
 Value = schedule-1
 value = daily
 
------
-
-SOP : Standard Operational Procedure : 
-
-DLM : Data Lifecycle manager : Automate the snapshot creation process. 
---> We use "tags" to filter the resources. 
 
 Default Retention Values: 
 Prod : 7 Days
@@ -540,18 +547,48 @@ Fast snapshot restore : Enable fast snapshot restore to ensure that volumes crea
 
 Task : https://aws.amazon.com/blogs/storage/automating-amazon-ebs-snapshot-and-ami-management-using-amazon-dlm/
 
-__________
-
-
-Task 1 : Launch an ec2 instance in ap-south-1a.. Create a "New volume with 1 gb size" in ap-south-1a and attach this volume to ec2 instance and make it available and write some data. Goto AWS console "Increase the volume size to 2 GB", make this 2gb volume available at OS level. Write some data.
-
-Task 2 : Launch Another ec2 instance in ap-south-1b..
-Get the 2gb volume data from instance 1a to newly launch 1b ec2 instance.. Make Same volume available to "1b instance"..!!
-
-Task 3 : Create a volume as unencrypted, and create another copy of volume as encrypted.
-
 =====================================================================================
 
+
+Scenario : 10 ec2 instances.. AV, MS Office, Custom WP, CUstom OS users, Applications, IIS.. 
+
+--> Launching 10 instance : connect to 10 instance and install everything in all 10 instance.. 
+--> 1 ec2 instance : Install everything.. : Keep it as Image : --> Launch "n" number using image..
+
+Client : OS with CIS Benchmarks (Center for Internet Security) : 
+
+*** GoldenAMI = CUstomized AMI.. For WINDOWS : Won't work with keypairs.. We need to change the password.. 
+
+Ec2 instance , Perform customizations --> Create a Golden AMI --> From GAMI we can launch 'n' num of ec2 instance.. 
+
+Similar to Snapshots..
+
+--> We can launch another instance in same region using GAMI.
+--> We can copy Region 1 GAMI to Region 2, And launch an ec2 instance in Region 2. 
+--> We can share GAMI from Acc 1 to Acc 2. 
+--> We can share GAMI to public.
+
+______________________________________
+
+
+How to recover a Linux ec2 instance, if we lost keypair.?
+--> Select the instance, Create a GoldenAMI, Launch new Instance from GAMI, While launching create a new keypair..!! Now youn can use new keyapir to connect to instance. 
+
+For windows instances, we need to depend on SSM (systems manager - runcommand and parameter store) to recover password.
+
+______________________________________
+
+
+Task 1 : Launch Linux ec2 instance, Make it as webserver.. Add custom webpages.. Create a 2gb volume and associate it make it perm mount and write some data.. then Create a Golden AMI and Launch instance from GAMI and test output. 
+
+Task 2 : Launch a Windows ec2 instance, Connect to it.. CHANGE ADMINISTRATOR PASSWORD, change timezone, change wallpaper, install "putty" software, Install IIS and deliver custom webpage..
+Now, STOP the INSTANCE and create a GoldenAMi. Launch an instance from GAMI, connect and Verify you got all custom settings or not.???
+
+Task 3 : How to setup password authentication to ec2-user user instead of keypair authentication.
+https://comtechies.com/password-authentication-aws-ec2.html
+
+Task 4 : launch a linux ec2 instance with a NEw KEYPAIR-1, Delete the keypair and try to connect to it.!! Fails..
+Now, create a goldenAMI, while launching "NEW KEYPAIR-2", and try to connect.
 
 
 
