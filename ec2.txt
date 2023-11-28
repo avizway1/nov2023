@@ -590,6 +590,64 @@ https://comtechies.com/password-authentication-aws-ec2.html
 Task 4 : launch a linux ec2 instance with a NEw KEYPAIR-1, Delete the keypair and try to connect to it.!! Fails..
 Now, create a goldenAMI, while launching "NEW KEYPAIR-2", and try to connect.
 
+============================================================================================
+
+D: 28/11/2023
+
+--> Cloud watch : Service to monitor all AWS resources i.e; s3, ec2, rds.. 
+--> We can monitor CPU, Disk and network for ec2 instance.
+** With Default metrics, we cannot monitor MEMORY Utilisation. 
+--> We can install an CloudWatch agenet and monitor Memory usage aswell. 
+
+--> We have two types of monitorings in AWS.
+==> Basic Monitoring : Free, Enabled by defaultly. 5 Minutes is monitoring interval.
+==> Detailed Monitoring : COST US, Need to enable explicitlty, 1 minute is monitoring interval.
+
+
+
+Task : Launch a Windows ec2 instance, Connect to it.. CHANGE ADMINISTRATOR PASSWORD, change timezone, change wallpaper, install "putty" software, Install IIS and deliver custom webpage..
+Now, STOP the INSTANCE and create a GoldenAMi. Launch an instance from GAMI, connect and Verify you got all custom settings or not.???
+
+Task 2 : Create a dashboard in cloudwatch and miultiple resources i.e; ec2 cpu/nw/disk and s3.
+
+Task 3 : Create a LowUsage Alarm on you ec2 instance. Whenever your ec2 instance cpu usage is <= 20 % for 5 min, Stop instance and get alert to given email id via sns.
+
+
+=======================================================================================================
+
+
+
+Vertical Scaling : Upgrading / Adding more resources to same Instance. i.e; from t2.micro to t3.medium
+
+To perform vertical scaling in AWS, First stop the ec2 instance, then only we can upgrqade it.
+
+
+
+
+#!/bin/bash
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+echo "<h1>This is my first webserver</h1>" > /var/www/html/index.html
+
+
+#!/bin/bash
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+echo "<h1>This is my Second webserver</h1>" > /var/www/html/index.html
+
+-----
+
+EIP : Dedicated Public IPm address for our ec2 instance.
+
+ENI : Elastic network Interface : Additional NIC card for ec2 instance
+
+----
+
+Task : Create a cw dashaboard and add ec2 instance cpu usage, network in and s3 bucket metrics (no of obj & bucket size).
+
+Task 2 : Try to deliver the webpage with the help of Userdata.
 
 
 
