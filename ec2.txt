@@ -686,27 +686,8 @@ Task : Launch an ec2 instance, connect to it, Create EFS.. Install httpd in your
 ==> Luanch an ec2 instance from GolDEN AMI and verify the web content.
 
 
-
-
-
-
-
-
-
-
-
 ============================================================================================
-
-
-
-Plecement Groups : 
---> Cluster PG
---> partition PG
---> Spread PG
-
-https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
-
-_______________________________________________________________________________________
+D: 01/12/2023
 
 Eventbridge : 
 
@@ -739,17 +720,20 @@ Task 1 : Configure Eventbridge to stop an ec2 instance at a particular time usin
 Task 2 : Configure to stop an ec2 instance after 5 minutes, trigger an email with custom email format.
 
 Optional Task 3 : Configure to get an alert when someone deleted an s3 bucket / someone deleted data from specific s3 bucket.
---> You need to configure Cloudtrail data events for the s3 buckets.
+--> You need to configure Cloudtrail "data events" for the s3 buckets.
 
 
+_______________________________________________________________________________________
 
 
+Plecement Groups : 
+--> Cluster PG
+--> partition PG
+--> Spread PG
 
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html
 
-mkdir myefs1
-
-mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0da295f22522c44f9.efs.ap-south-1.amazonaws.com:/ /var/www/html/
-
+_______________________________________________________________________________________
 
 
 
