@@ -779,6 +779,140 @@ LNXNKEAPPUAT02
 ==========================================================================================
 
 
+D: 05/12/2023
+
+Vertical Scaling : Upgrading same instance resources.. t2.micro --> c5.2xlarge
+Horizantal Scaling : Distribute application load to multiple ec2 instances.. 
+
+Classic ELB : Layer 4/7 LB.. : Outdated.. : http, https, tcp, udp.. ==> Ignore this
+Application ELB : Layer 7 ELB.. : http and https
+Network ELB : Layer 4 ELB.. : TCP, UDP, TLS 
+Gateway ELB : GENEVE / 3rd party security virtual applicances.. 
+
+**Please select at least two Subnets in different Availability Zones to provide higher availability for your load balancer.
+
+** Dont use same Security group for your ec2 instance and Load balancer.
+
+
+For ELBs, We will get DNS Endpoint..
+Roundrobin algorithm.. 
+
+If you want to view IP address of an ELB, 
+--> Navigate to "Network interfaces" and observe, You can get IP of ELB.
+--> nslookup "ELB-DNS-NAME"
+___________________________________________________
+
+Target Group : Each target group is used to route requests to one or more registered targets. When you create each listener rule, you specify a target group and conditions. When a rule condition is met, traffic is forwarded to the corresponding target group.
+
+Application ELB : http and https
+
+Application Load balancing algorithm : 
+--> Round robin
+--> Least outstanding requests
+
+--> We cannot assign a dedicated IP address for our Application ELB.
+
+Network ELB : TCP.. 
+--> Flow Hash algorithm.
+--> We CAN assign a dedicated IP address for our network ELB.
+
+Application LB Supports path based routing, also supports Microservices.
+
+millions req/sec : NLB
+
+ELB Access Logs : Logging on ELB. Destination is s3.
+_________________________
+
+Free Tier : 750 hrs/month
+
+-----------------------
+
+Task : Create alb, and deliver webpapes on port 80. 
+Step 1 : launch 2 ec2 instances in 2 diff AZs.
+Step 2 : Create a Security group and open http for everyone.
+Step 3 : Create a target group with http protocol, add your 2 ec2 instances here.
+Step 4 : Create an Application load balancer and deliver webpage.
+
+Task 2 : 
+--> what is telnet and how to use telnet, test it with an ec2 instance on port 22.
+
+
+
+
+==================================================================================
+
+
+Task : Create nlb, and deliver webpapes on port 80, 8888, 8080. 
+
+Task 2 : Configure pipeline mechanism between ec2 instances and elb.
+--> Edit your ec2 instance security group and open port 80 for ELB SG
+
+--> When we give direct instance IP, it should not deliver any webpage.
+--> When we give elb dns name, this should work.
+
+
+Task 3 : Create an Alarm on our ec2 instance. Whever CPU usage is more than 80%, configure to Stop ec2 instance.
+
+Task : Try "stress" command to put load on ec2 instance and test high usage.
+
+stress --cpu 1 --timeout 900
+
+To knnow CPU count run this command: nproc
+
+--> Install stress package first, 
+amazon-linux-extras install epel -y
+yum install stress -y
+
+
+=============================================================================================
+
+
+
+
+1. Create a goldenAMI (Make it as webserver)
+2. Create an ELB.  (Create an empty load balancer)
+3. Create an ASG
+	3.1 Create a Launch teamplate (Settings of new ec2 instances : AMI, Instance type, sg, keypair)
+	3.2 create an ASG (when to scale)
+
+________
+
+1 : Create a Golden AMI
+2 : Create a ELB
+3 : Create a Launch template
+4 : Create an ASG with Fixed (2) and test it
+5 : Confiure Scheduled scaling.
+6 : Configure Simple scaling (low usage scaling)
+7 : Configure Versions for Launch Tempplate. 
+-----
+
+ASG : Auto Scaling Group :
+
+--> DYnamic (Step/Simple/TargetTracking) Load 
+--> Scheduled scaling : 
+--> Manual : 
+
+
+ScaleIN : Remove the instance from ASG
+ScaleOut : Add the instances to ASG.
+
+How ASG will choose the instance to terminate if any ScaleIN action triggered..!! 
+
+ASG Termination policy : refer to the image.
+
+
+t2.micro --> Current configuration.. 
+t2.nano..??? How you can do this with 0 downtime..!! 
+
+
+Create a new launch configuration/template.. Associate this with ASG. Terminate the existing instance.. Now new instance will come with updated launch config settings.
+(Set Desired capacity to 2)..!!! 
+
+
+
+
+==========================================================================================
+
 Instance store volumes : We don't use this in real environments.   (NO FREE TIER ELIGIBILTY)
 	--> Also called as Ephemeral storages (Temporary storage).
 	--> We cannot STOP/Start the instance.
