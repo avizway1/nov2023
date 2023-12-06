@@ -827,7 +827,7 @@ Free Tier : 750 hrs/month
 
 -----------------------
 
-Task : Create alb, and deliver webpapes on port 80. 
+Task : Create alb, and deliver webpapes on port 80, 8888, 8080. . 
 Step 1 : launch 2 ec2 instances in 2 diff AZs.
 Step 2 : Create a Security group and open http for everyone.
 Step 3 : Create a target group with http protocol, add your 2 ec2 instances here.
@@ -837,15 +837,13 @@ Task 2 :
 --> what is telnet and how to use telnet, test it with an ec2 instance on port 22.
 
 
-
-
 ==================================================================================
 
 
 Task : Create nlb, and deliver webpapes on port 80, 8888, 8080. 
 
 Task 2 : Configure pipeline mechanism between ec2 instances and elb.
---> Edit your ec2 instance security group and open port 80 for ELB SG
+--> Edit your ec2 instance security group and open port 80/8080/888 for "ELB SG"
 
 --> When we give direct instance IP, it should not deliver any webpage.
 --> When we give elb dns name, this should work.
@@ -855,18 +853,34 @@ Task 3 : Create an Alarm on our ec2 instance. Whever CPU usage is more than 80%,
 
 Task : Try "stress" command to put load on ec2 instance and test high usage.
 
-stress --cpu 1 --timeout 900
+stress --cpu 1 --timeout 600
 
 To knnow CPU count run this command: nproc
 
 --> Install stress package first, 
-amazon-linux-extras install epel -y
-yum install stress -y
+Step 1 : amazon-linux-extras install epel -y
+Step 2 : yum install stress -y
+Step 3 ; Configure Alarm on your ec2 instance. Whenver cpu usage is 80% more for 5 min, stop the instance.
+Step 4 : stress --cpu 1 --timeout 600
+Step 5 : Relax and observe the output. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 =============================================================================================
-
-
 
 
 1. Create a goldenAMI (Make it as webserver)
@@ -907,8 +921,6 @@ t2.nano..??? How you can do this with 0 downtime..!!
 
 Create a new launch configuration/template.. Associate this with ASG. Terminate the existing instance.. Now new instance will come with updated launch config settings.
 (Set Desired capacity to 2)..!!! 
-
-
 
 
 ==========================================================================================
