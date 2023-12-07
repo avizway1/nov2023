@@ -864,40 +864,17 @@ Step 3 ; Configure Alarm on your ec2 instance. Whenver cpu usage is 80% more for
 Step 4 : stress --cpu 1 --timeout 600
 Step 5 : Relax and observe the output. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 =============================================================================================
 
+D: 07/12/2023
 
-1. Create a goldenAMI (Make it as webserver)
+1. Create a goldenAMI (Launch instance, Make it as webserver then create GAMI)
 2. Create an ELB.  (Create an empty load balancer)
 3. Create an ASG
 	3.1 Create a Launch teamplate (Settings of new ec2 instances : AMI, Instance type, sg, keypair)
 	3.2 create an ASG (when to scale)
 
-________
 
-1 : Create a Golden AMI
-2 : Create a ELB
-3 : Create a Launch template
-4 : Create an ASG with Fixed (2) and test it
-5 : Confiure Scheduled scaling.
-6 : Configure Simple scaling (low usage scaling)
-7 : Configure Versions for Launch Tempplate. 
 -----
 
 ASG : Auto Scaling Group :
@@ -921,6 +898,16 @@ t2.nano..??? How you can do this with 0 downtime..!!
 
 Create a new launch configuration/template.. Associate this with ASG. Terminate the existing instance.. Now new instance will come with updated launch config settings.
 (Set Desired capacity to 2)..!!! 
+
+
+________
+
+1 : Create a Golden AMI
+2 : Create a ELB
+3 : Create a Launch template
+4 : Create an ASG with Fixed (2) and test it
+5 : Confiure Scheduled scaling.
+6 : Configure Simple scaling (low usage scaling)
 
 
 ==========================================================================================
