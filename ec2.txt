@@ -918,16 +918,6 @@ Instance store volumes : We don't use this in real environments.   (NO FREE TIER
 	--> If required, we can reboot. We don't loss any data.
 	--> If underlying h/w failure happens, we'll loss all the data.
 
-________________________
-
-Instance Isolation : https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjr993FsAyS65uL4QPbGu8n_JcB6Fwq6jDylWglIapsQQjHfbcbir83OT-I-_a-nhvvo8&usqp=CAU
-
-Dedicated and Shared tenancy :
---> Shared tenancy : underlying hardware shared with multiple customers.
---> Dedicated tenancy:
-	--> Dedicated instance : Dedicated instance provided by aws. No control on backend process.
-	--> Dedicated host : We can apply licenses at underlying physical resources. Also, we can launch multiple instances on a dedicated host.
-
 
 ==========================================================================================
 
@@ -1018,7 +1008,6 @@ Syntax : aws s3 sync s3://sourcebucketname /home/ec2-user
 
 ========
 
-
 Optinal for Fresher and Mandatory for Exp guys.
 
 Task 3 : Mount an s3 bucket to ec2 instance.
@@ -1028,10 +1017,7 @@ Task 4 : Create a role to roam across multiple AWS accounts (using switch role).
 Help Link : https://www.youtube.com/watch?v=sZiiB4yF0VY
 
 
-
 =============
-
-
 
 Task  : Create a simple index.html and Upload it to an s3 bucket.. while launching the instance, make your instance as webserver with the help of Userdata.. then copy all the webcontent from s3 bucket to web content path (/var/www/html/). Perform using "userdata".
 
@@ -1041,9 +1027,77 @@ service httpd start
 chkconfig httpd on
 copy data from s3 to ec2		(--recursive)...?????
 
-==========================================================================================
+=========================================================================================
+
+D: 11/12/2023
+
+ElasticBeanstalk : It provides preconfigured platforms.
+--> Python, java, go, ruby, php, .net
+--> We can deploy/upload our code to this platform. 
+--> AWS Creates ELB, ASG automatically for our instances.
+--> Less customisations at OS level, We cannot deliver multiple applications. 
+--> it comes under PaaS (Platform as a Service)
+
+--> If any customer/client dont want to manage infra to deliver their application, we can suggest beanstalk.
+
+=========================================================================================
 
 
+UserData : Bootstrap script, Executes when instance launched for the first time.
+if you want to execute it after every reboot, use cloud-init module for Linux.
+For windows, Use <persist>on</persist>
+
+https://repost.aws/knowledge-center/execute-user-data-ec2
+
+
+MetaData : We can get data about our ec2 instances without having access to aws management console.
+
+curl http://169.254.169.254/latest/meta-data/
+
+curl http://169.254.169.254/latest/meta-data/network/interfaces/macs/02:fd:e9:46:84:2c/owner-id
+
+ami-id
+ami-launch-index
+ami-manifest-path
+block-device-mapping/
+events/
+hostname
+identity-credentials/
+instance-action
+instance-id
+instance-life-cycle
+instance-type
+local-hostname
+local-ipv4
+mac
+metrics/
+network/
+placement/
+profile
+public-hostname
+public-ipv4
+public-keys/
+reservation-id
+security-groups
+services/
+
+====================================================================
+
+
+Instance Isolation : https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjr993FsAyS65uL4QPbGu8n_JcB6Fwq6jDylWglIapsQQjHfbcbir83OT-I-_a-nhvvo8&usqp=CAU
+
+Dedicated and Shared tenancy :
+--> Shared tenancy : underlying hardware shared with multiple customers.
+--> Dedicated tenancy:
+	--> Dedicated instance : Dedicated instance provided by aws. No control on backend process.
+	--> Dedicated host : We can apply licenses at underlying physical resources. Also, we can launch multiple instances on a dedicated host.
+
+
+Termination Protection : Help us to eliminate accidental terminations, if we enable this option.
+If you really want to terminate your ec2 instance, first "Disbale termination protection", then terminate your instance.
+
+ShutDown behaviour : If you initiate a shutdown option from OS level, what should happen to our ec2 instance at console level. Default option is "Stop"
+--> we can choose to "Stop" or "terminate".
 
 
 
