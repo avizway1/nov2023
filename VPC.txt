@@ -204,7 +204,6 @@ Flow Logs: We can enable flowlogs at
 We can choose destination as 1. S3 bucket 2. Cloudwatch Logs groups.
 
 
-
 --------------------------------
 
 permissions for flowlogs role policy:
@@ -252,8 +251,6 @@ Set rust entity as below:
 _____________________________________________________________________________________
 
 
-
-
 Task : Create a NAT Instance and provide internet to PRIVATE SUBNET Instances with the help of NAT INSTANCE.
 
 
@@ -271,11 +268,9 @@ Task  : user task 3 settings and draw.io website and design this diagram.
 https://app.diagrams.net/?splash=0&libs=aws4
 
 
+====================================================================
 
-
-
-____________________________________________________________________________________
-
+D: 19/12/2023
 
 NACL : Network Access Control List : We can allow/deny traffic at Subnet level/AZ level using this NACLs.
 --> We need to takes care about the inbound rules and outbound rules.
@@ -288,4 +283,69 @@ NACL : Network Access Control List : We can allow/deny traffic at Subnet level/A
 https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html#nacl-ephemeral-ports
 
 --> Lowest rule number will have highest permissions. 
+
+====================================================================
+
+
+Endpoints : Private Links : It provides private connectivity to the resources. If we have any requirement, s3 rwquests/dynamodb req should not flow over the internet. 
+
+NAT Gateway Works with IPv4. 
+If our VPC is configured to use IPv6, Instead of NAT Gateway, We use "Egress Only Internet Gateways".
+
+
+Can we associate multiple CIDRs for our VPC.
+Yes.. 
+
+_________________
+
+
+VPC Peering : Allow us to enable communication between multiple VPCs. (Same region, DIff region, Diff AWS accout VPCs)
+
+--> Requester VPC and Accepter VPC should not have same CIDR range.
+--> VPC Peering is non transitive peering. 
+--> Update both the VPCs route tables with Another VPC CIDR blocks via Peering connection. 
+
+			Requester VPC (mumbai)				Accepeter VPC (Singapore)
+VPC CIDR	192.168.0.0/21						172.31.0.0/16
+VPC ID		vpc-03f82e4037cbecdd9				vpc-0d5ff77f3dcb273cb
+Region		ap-south-1							ap-southeast-1
+ACC ID		501170964283						501170964283
+
+
+-----------
+
+
+8 Subnets in environment :  2 public-web (public), 2 application (private), 2 Database/data (private), 2 lambda.. 
+
+If our VPC is running with IPv6: instead of NAT Gateway, we need to "Egress Only Internet gateway"
+
+
+VPN Connectivity (openvpn): https://www.youtube.com/watch?v=JSTyjISscNg
+Transit Gateway : https://www.youtube.com/watch?v=xyLlMBHy2wc
+
+
+Site-to-site vpn settings
+
+1. Create Virtual private gateway.
+2. Create Customer Gateway. You need to provide your corporate office Public IP address which is confired in Firewall.
+3. Using the Step 1 and step 2 resource and configure the Site to site vpn. Download the configuration and share it with Firewall team.
+
+Task : Practice entire VPC (except NAT gateway : Use NAT Instance)
+
+
+-----------------
+
+Connect to Private Subnet resources without bastian host : 
+https://www.youtube.com/watch?v=CN-_Y3uqC44&t=3s
+
+
+Single instance: 
+ssh -i 730-Linux.pem ec2-user@i-0e78400f916d546a0 \
+    -o ProxyCommand='aws ec2-instance-connect open-tunnel --instance-id i-0e78400f916d546a0'
+	
+Multi with port forwarding:
+
+aws ec2-instance-connect open-tunnel \
+    --instance-id i-0e78400f916d546a0 \
+    --local-port 8888
 
