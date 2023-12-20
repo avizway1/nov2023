@@ -289,6 +289,10 @@ https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html#nacl-ephe
 
 Endpoints : Private Links : It provides private connectivity to the resources. If we have any requirement, s3 rwquests/dynamodb req should not flow over the internet. 
 
+Endpoint Services : We can use this endpoint services to share a service from your own aws acocunt to anotyher aws ccount securely. We are controlling how trafic flow is happening in backend.
+--> refer youtube video
+
+
 NAT Gateway Works with IPv4. 
 If our VPC is configured to use IPv6, Instead of NAT Gateway, We use "Egress Only Internet Gateways".
 
@@ -319,19 +323,18 @@ ACC ID		501170964283						501170964283
 
 If our VPC is running with IPv6: instead of NAT Gateway, we need to "Egress Only Internet gateway"
 
+====
 
 VPN Connectivity (openvpn): https://www.youtube.com/watch?v=JSTyjISscNg
 Transit Gateway : https://www.youtube.com/watch?v=xyLlMBHy2wc
 
+====
 
 Site-to-site vpn settings
 
 1. Create Virtual private gateway.
 2. Create Customer Gateway. You need to provide your corporate office Public IP address which is confired in Firewall.
 3. Using the Step 1 and step 2 resource and configure the Site to site vpn. Download the configuration and share it with Firewall team.
-
-Task : Practice entire VPC (except NAT gateway : Use NAT Instance)
-
 
 -----------------
 
@@ -343,9 +346,10 @@ Single instance:
 ssh -i 730-Linux.pem ec2-user@i-0e78400f916d546a0 \
     -o ProxyCommand='aws ec2-instance-connect open-tunnel --instance-id i-0e78400f916d546a0'
 	
-Multi with port forwarding:
+Multiple with port forwarding:
 
 aws ec2-instance-connect open-tunnel \
     --instance-id i-0e78400f916d546a0 \
     --local-port 8888
 
+=======
