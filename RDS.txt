@@ -139,10 +139,110 @@ Automated/system snapshots : AWS creates these, We cannot delete these.
 RDS won't work on In-Place restoration. Restoration happens as a new rds db instance with new endpoint.
 
 
-Restore to point in time : You are creating a new DB instance from a source DB instance at a specified time.
+====================================================================================================
 
 
-____________________________________________________________________________________
+Homegenious : mysql --> DMS --> AWS RDS Mysql
+heterogenious : IBM DB2 --> SCT (Schema Convertion tool) --> DMS --> AWS RDS Mysql/aurora
 
-Task 1 : Refer the Shared VPC Image and Deliver Webpage from provate subnet ec2 instances, via Load Balancer.
+
+Step 1 : create a DMS cluster (dms.t2.micro)
+Step 2 : Create source endpoint (Create an RDS cluster, and restore the shared sample Database), test the connectivity to DMS cluster
+Step 3 ; Create a Target endpoint (Create a new rds cluster) test the connectivity to DMS cluster
+
+Step 4 : Create a Migration task using Source and target endpoints (step 2 and 3)
+
+migrate existing data. one time.
+Migrate changes only. only changes migrates.
+Migrate existing and continue migration. 
+
+
+-------
+
+How to connect to Redshift : 
+https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-using-workbench.html
+Tool Name : sql workbenh/J.
+
+
+OLAP : Online Analytical process : Redshift
+OLTP : Online Transactional process : RDS
+
+Redshift: 
+leader node : Designed to run query on compute nodes.
+Compute Node : it stores actual data
+
+_________________
+
+**Cost you**
+
+Task : launch an ec2 instance in mumbai region.. connect to it and make it as webserver.. 
+
+Use AWS Application Migration Service (MGN) and migrate the Mumbai region ec2 instance to "Sydney" region and verify webpage.
+
+https://www.youtube.com/watch?v=fIEwoFaXExQ
+
+----------------------------------
+
+Task : COST US https://aws.amazon.com/getting-started/hands-on/migrate-rdsmysql-to-auroramysql/?trk=gs_card (No free tier)
+
+
+Task 3 : Install mysql workbench in your local laptop. Create a mysql rds cluster in "customvpc- Private Subnet", Now connect to this instance from your local laptop over ssh connection.
+--> Launch an amazon linux 2 instance in customvpc-publicsubnet.
+
+reference video: https://www.youtube.com/watch?v=qulcnNu8g7o
+
+----------------------------------------------
+
+**Exp: Mandatory
+
+Task 2 : perform DMS Migration from Mysql to mysql with in a vpc.
+
+Task : launch an rds mysql db instance-1.. Now export/restore the shared db... 
+
+Launch another rds mysql db instance-2.. Migrate all the datbases and tables from Db instance-1 to db instance-2 Using DMS (Database Migration service).
+
+1. Launch a DMS cluster
+2. Create endpoints (Source and destination) and test the endpoints
+3. Create a replciation job and verify.
+
+https://www.youtube.com/watch?v=SXuOjfKpIrs
+
+
+Single Digit millisecond latency at any scale of data.
+
+
+{
+"Sno" : "1",
+"F Name" : "A",
+"L name" : "b"
+},
+{
+"Sno" : "2",
+"F Name" : "c",
+"L name" : "d"
+},
+
+DynamoDB Application ; https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TicTacToe.html
+
+In-memory caching solution for DynamoDB : DAX (Database Accelerator)
+
+RDS has a Cache solution, Solution Name is "Elasticache".
+it has 2 opensource caching engines.
+--> MemcacheD
+--> Redis : Support authentication menthods (IAM Auth / RedisAUTH).
+
+
+Neptune : Fast, reliable graph database built for the cloud.
+Amazon DocumentDB : Fully-managed MongoDB-compatible database service
+Amazon keySpace : Kassandra Compatable AWS database service.
+Amazon QLDB : Fully Managed ledger Database.
+
+
+
+Redshift : 
+
+
+
+
+
 
