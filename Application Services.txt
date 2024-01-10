@@ -179,6 +179,40 @@ https://www.youtube.com/watch?v=rtI26X6FJX0&list=PLneBjIzDLECkdgoinrTO7D519zgPEm
 
 
 ______________________________________________________________________________________
+
+Traditional method : One HW, One OS, One application
+Virtualisation : One Hw, Multiple OS, Multiple Applications (One app from one OS)
+	==> We have 2 types of hypervisors
+			--> Host based hypervisor : HW --> OS (win10/11/mac) --> Vmware/hyperv/virtualbox --> os --> App
+			--> Bare Metal hypervisor : HW --> ESXi/Hyper-v/Xen/Nitro --> OS --> App (Enterprise level)
+
+Containarisation : One HW, One OS/Demon/SW , Multiple applications
+
+
+
+
+Task : Launch an ec2 instance, Install Docker, Run nginx and deliver default webpage.
+Task : use the shared Dockerfile and prepare your own image, run and test in your local.
+Push this image to ECR repository (own aws accounts).
+
+We have 2 Apps in repository, create 2 ECR repository 1.nginx 2. node.js
+
+
+
+docker ps
+docker ps -a
+docker images
+docker rm containeer
+docker rmi imageid/name
+docker run imageid (docker run -it -p localport:imageport imagename)
+
+
+Project 2 : https://www.youtube.com/watch?v=1IJJmWKzeXQ
+
+project 3 : https://www.youtube.com/watch?v=YEIuuVKIy8U
+
+
+______________________________________________________________________________________
  
 
 Cloud9 : IDE with in AWS environment. 
